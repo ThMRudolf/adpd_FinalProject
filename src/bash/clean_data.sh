@@ -10,7 +10,7 @@ mkdir -p "$output_dir"
 # Process each CSV file in the input directory
 for input_file in "$input_dir"/*.csv; do
     # Extract the file name without the directory
-    file_name=$(basename "$input_file")
+    file_name="$(basename "$input_file")"
 
     # Define the output file path
     output_file="$output_dir/$file_name"
@@ -18,16 +18,16 @@ for input_file in "$input_dir"/*.csv; do
     # Process the file
     gawk '{
         # Remove quotes
-        gsub(/"/, "")
+        #gsub(/"/, "")
 
         # Replace commas with ;;
-        gsub(/,/, ";;")
+        #gsub(/,/, ";;")
 
         # Convert to lowercase
         $0 = tolower($0)
 
         # Replace ;; with |
-        gsub(/;;/, "|")
+        #gsub(/;;/, "|")
 
         # Replace slavish letters with corresponding English alphabet
         gsub(/[áàäâãå]/, "a")
@@ -40,7 +40,7 @@ for input_file in "$input_dir"/*.csv; do
         gsub(/[žźż]/, "z")
 
         # Remove all characters that are not in the English alphabet, space, or |
-        gsub(/[^a-z |]/, "")
+        # gsub(/[^a-z |]/, "")
 
         print
     }' "$input_file" > "$output_file"
