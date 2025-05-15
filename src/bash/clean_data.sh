@@ -16,18 +16,27 @@ for input_file in "$input_dir"/*.csv; do
     output_file="$output_dir/$file_name"
 
     # Process the file
-    gawk '{
-        # Remove quotes
-        gsub(/"/, "")
-
-        # Replace commas with ;;
-        gsub(/,/, ";;")
+    gawk -F',' '
+    {
+        # Replace commas inside quotes with semicolons
+        line = $0
+        in_quotes = 0
+        out = ""
+        for (i = 1; i <= length(line); i++) {
+            c = substr(line, i, 1)
+            if (c == "\"") {
+                in_quotes = !in_quotes
+                out = out c
+            } else if (c == "," && in_quotes) {
+                out = out ";"
+            } else {
+                out = out c
+            }
+        }
+        $0 = out
 
         # Convert to lowercase
         $0 = tolower($0)
-
-        # Replace ;; with |
-        gsub(/;;/, "|")
 
         # Replace slavish letters with corresponding English alphabet
         gsub(/[áàäâãå]/, "a")
@@ -40,8 +49,16 @@ for input_file in "$input_dir"/*.csv; do
         gsub(/[žźż]/, "z")
 
         # Remove all characters that are not in the English alphabet, space, or |
-        gsub(/[^a-z |]/, "")
+        gsub(/[^a-z0-9 |, . :]/, "")
 
+        # Ensure all rows have the same number of fields as the header
+        if (NR == 1) {
+            nfields = NF
+        }
+        while (NF < nfields) {
+            $0 = $0 ", "
+            NF++
+        }
         print
     }' "$input_file" > "$output_file"
     echo "Processed $input_file -> $output_file"
