@@ -8,6 +8,7 @@ __pycache__/
 *.rar
 *.csv
 *.xlsx
+*.mp4
 
 
 # Distribution / packaging
