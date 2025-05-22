@@ -9,6 +9,7 @@ __pycache__/
 *.csv
 *.xlsx
 *.mp4
+*.json
 
 
 # Distribution / packaging
