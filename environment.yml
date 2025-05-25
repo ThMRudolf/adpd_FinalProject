@@ -1,0 +1,21 @@
+name: cerveza
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - streamlit
+  - scikit-learn
+  - scipy
+  - numpy
+  - plotly
+  - requests
+  - matplotlib
+  - watchdog
+  - boto3
+  - awswrangler
+  - sphinx
+  - myst-parser
+  - sphinx-rtd-theme  # 👈 agrégalo aquí
+     
