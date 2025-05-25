@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📖 MÓDULOS &mdash; documentación de BrewSmart - 0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9c9b61ad"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="🐳 Dockerfile para BrewSmart" href="info_docker.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BrewSmart
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="estructura.html">📦 Estructura del Proyecto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_docker.html">🐳 Dockerfile para BrewSmart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">📖 MÓDULOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-main">Módulo <code class="docutils literal notranslate"><span class="pre">main.py</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-py.transform">Módulo <code class="docutils literal notranslate"><span class="pre">transform.py</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#py.transform.clean_dataframe"><code class="docutils literal notranslate"><span class="pre">clean_dataframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.transform.clean_text"><code class="docutils literal notranslate"><span class="pre">clean_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.transform.process_csv_files"><code class="docutils literal notranslate"><span class="pre">process_csv_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.transform.renombrar_columnas"><code class="docutils literal notranslate"><span class="pre">renombrar_columnas()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-py.load">Módulo <code class="docutils literal notranslate"><span class="pre">load.py</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#py.load.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-py.athena_db">Módulo <code class="docutils literal notranslate"><span class="pre">athena_db.py</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#py.athena_db.calcular_cervezas_per_brewery"><code class="docutils literal notranslate"><span class="pre">calcular_cervezas_per_brewery()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.athena_db.calcular_cervezas_per_style"><code class="docutils literal notranslate"><span class="pre">calcular_cervezas_per_style()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.athena_db.create_database"><code class="docutils literal notranslate"><span class="pre">create_database()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.athena_db.create_table"><code class="docutils literal notranslate"><span class="pre">create_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.athena_db.sensaciones_top_estilos"><code class="docutils literal notranslate"><span class="pre">sensaciones_top_estilos()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-py.eda_ui">Módulo <code class="docutils literal notranslate"><span class="pre">eda_ui.py</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#py.eda_ui.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.eda_ui.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.eda_ui.vista_brewery"><code class="docutils literal notranslate"><span class="pre">vista_brewery()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.eda_ui.vista_estilo"><code class="docutils literal notranslate"><span class="pre">vista_estilo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.eda_ui.vista_sensaciones"><code class="docutils literal notranslate"><span class="pre">vista_sensaciones()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-py.recommender">Módulo <code class="docutils literal notranslate"><span class="pre">recommender.py</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#py.recommender.df_scale_data"><code class="docutils literal notranslate"><span class="pre">df_scale_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.recommender.get_valid_image_url"><code class="docutils literal notranslate"><span class="pre">get_valid_image_url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.recommender.recomendar_hibrido"><code class="docutils literal notranslate"><span class="pre">recomendar_hibrido()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-py.utils">Módulo <code class="docutils literal notranslate"><span class="pre">utils.py</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#py.utils.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#py.utils.resize_image_to_height"><code class="docutils literal notranslate"><span class="pre">resize_image_to_height()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modulo-streamlit-ui-py">Módulo <code class="docutils literal notranslate"><span class="pre">streamlit_ui.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BrewSmart</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📖 MÓDULOS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modulos.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="modulos">
+<h1>📖 MÓDULOS<a class="headerlink" href="#modulos" title="Link to this heading"></a></h1>
+<section id="module-main">
+<span id="modulo-main-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">main.py</span></code><a class="headerlink" href="#module-main" title="Link to this heading"></a></h2>
+<p>Módulo principal. Ejecuta todo el pipeline de trabajo.</p>
+<blockquote>
+<div><p>1.- Procesa los archivos CSV de entrada y los guarda en un directorio limpio.</p>
+<p>2.- Sube los archivos CSV a un bucket de S3.</p>
+<p>3.- Ejecuta consultas SQL en Athena y guarda los resultados en un directorio local.</p>
+<p>4.- Genera gráficos de los resultados.</p>
+<p>5.- Genera un modelo de recomendación de cervezas.</p>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.main">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.main" title="Link to this definition"></a></dt>
+<dd><p>Función principal que ejecuta el pipeline de trabajo.</p>
+</dd></dl>
+
+</section>
+<section id="module-py.transform">
+<span id="modulo-transform-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">transform.py</span></code><a class="headerlink" href="#module-py.transform" title="Link to this heading"></a></h2>
+<p>Módulo de limpieza/transformación de datos
+Funciones:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>clean_text</strong>: Limpia un texto aplicando transformaciones.</p></li>
+<li><p><strong>clean_dataframe</strong>: Limpia un DataFrame aplicando transformaciones celda por celda.</p></li>
+<li><p><strong>process_csv_files</strong>: Procesa todos los archivos CSV en un directorio, aplicando limpieza y guardando resultados.</p></li>
+</ul>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="py.transform.clean_dataframe">
+<span class="sig-prename descclassname"><span class="pre">py.transform.</span></span><span class="sig-name descname"><span class="pre">clean_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.transform.clean_dataframe" title="Link to this definition"></a></dt>
+<dd><p>Limpia todo un DataFrame aplicando transformaciones celda por celda.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>Dataframe: Datos originales.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dataframe: Textos Limpios.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.transform.clean_text">
+<span class="sig-prename descclassname"><span class="pre">py.transform.</span></span><span class="sig-name descname"><span class="pre">clean_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.transform.clean_text" title="Link to this definition"></a></dt>
+<dd><p>Aplica limpieza a una celda de texto.</p>
+<ul>
+<li><p>Convierte a minúsculas.</p></li>
+<li><p>Reemplaza comas por punto y coma.</p></li>
+<li><p>Reemplaza caracteres acentuados por su versión sin acento.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>srt: Texto a limpiar.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Texto limpio.</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.transform.process_csv_files">
+<span class="sig-prename descclassname"><span class="pre">py.transform.</span></span><span class="sig-name descname"><span class="pre">process_csv_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.transform.process_csv_files" title="Link to this definition"></a></dt>
+<dd><p>Procesa todos los archivos CSV del directorio de entrada.</p>
+<blockquote>
+<div><dl>
+<dt>Args:</dt><dd><p>(Path): Directorio de entrada con archivos CSV.</p>
+<p>(Path): Directorio de salida para archivos CSV procesados.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None: Los archivos CSV procesados se guardan en el directorio de salida.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.transform.renombrar_columnas">
+<span class="sig-prename descclassname"><span class="pre">py.transform.</span></span><span class="sig-name descname"><span class="pre">renombrar_columnas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.transform.renombrar_columnas" title="Link to this definition"></a></dt>
+<dd><p>Renombra las columnas de un DataFrame.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>Dataframe: Datos originales.</p>
+</dd>
+<dt>Returns:</dt><dd><p>DataFrame: Columnas renombradas.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</section>
+<section id="module-py.load">
+<span id="modulo-load-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">load.py</span></code><a class="headerlink" href="#module-py.load" title="Link to this heading"></a></h2>
+<p>Modulo para cargar los datos a un buckect de S3
+Funciones:</p>
+<blockquote>
+<div><p>1.- <strong>load_data</strong>: Carga los datos desde un bucket de S3</p>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="py.load.load_data">
+<span class="sig-prename descclassname"><span class="pre">py.load.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.load.load_data" title="Link to this definition"></a></dt>
+<dd><p>Función que carga los datos desde un bucket de S3</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>boto3.client: Cliente de S3 para interactuar con el servicio</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Indicador booleano de éxito o fracaso de la carga de datos.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-py.athena_db">
+<span id="modulo-athena-db-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">athena_db.py</span></code><a class="headerlink" href="#module-py.athena_db" title="Link to this heading"></a></h2>
+<p>Modulo que realiza una exploración de los datos de la base</p>
+<p>Funciones:</p>
+<blockquote>
+<div><p>1.- <strong>create_database</strong>: Crea una base de datos en Athena</p>
+<p>2.- <strong>create_table</strong>: Crea una tabla en Athena</p>
+<p>3.- <strong>calcular_cervezas_per_brewery</strong>: Calcula el número de cervezas por cervecería</p>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="py.athena_db.calcular_cervezas_per_brewery">
+<span class="sig-prename descclassname"><span class="pre">py.athena_db.</span></span><span class="sig-name descname"><span class="pre">calcular_cervezas_per_brewery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_bucket</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.athena_db.calcular_cervezas_per_brewery" title="Link to this definition"></a></dt>
+<dd><p>Función que calcula el número de cervezas por cervecería</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sesion</strong> – Sesión de boto3</p></li>
+<li><p><strong>output_bucket</strong> – Bucket de salida</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Respuesta de la consulta con el número de cervezas por cervecería</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.athena_db.calcular_cervezas_per_style">
+<span class="sig-prename descclassname"><span class="pre">py.athena_db.</span></span><span class="sig-name descname"><span class="pre">calcular_cervezas_per_style</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_bucket</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.athena_db.calcular_cervezas_per_style" title="Link to this definition"></a></dt>
+<dd><p>Función que calcula el número de cervezas por estilo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sesion</strong> – Sesión de boto3</p></li>
+<li><p><strong>output_bucket</strong> – Bucket de salida</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Respuesta de la consulta con las cervezas por estilo</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.athena_db.create_database">
+<span class="sig-prename descclassname"><span class="pre">py.athena_db.</span></span><span class="sig-name descname"><span class="pre">create_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.athena_db.create_database" title="Link to this definition"></a></dt>
+<dd><p>Función que crea una base de datos en Athena</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sesion</strong> – Sesión de boto3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.athena_db.create_table">
+<span class="sig-prename descclassname"><span class="pre">py.athena_db.</span></span><span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BUCKET_NAME</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.athena_db.create_table" title="Link to this definition"></a></dt>
+<dd><p>Función que crea una tabla en Athena</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sesion</strong> – Sesión de boto3</p></li>
+<li><p><strong>BUCKET_NAME</strong> – Nombre del bucket de S3 donde se encuentran los datos</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.athena_db.sensaciones_top_estilos">
+<span class="sig-prename descclassname"><span class="pre">py.athena_db.</span></span><span class="sig-name descname"><span class="pre">sensaciones_top_estilos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_bucket</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.athena_db.sensaciones_top_estilos" title="Link to this definition"></a></dt>
+<dd><p>Función que calcula las sensaciones de los 15 estilos de cerveza mejor valorados</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sesion</strong> – Sesión de boto3</p></li>
+<li><p><strong>output_bucket</strong> – Bucket de salida</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Respuesta de la consulta con las sensaciones de los estilos</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-py.eda_ui">
+<span id="modulo-eda-ui-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">eda_ui.py</span></code><a class="headerlink" href="#module-py.eda_ui" title="Link to this heading"></a></h2>
+<p>Módulo principal de la aplicación de StreamLit
+para mostrar un análisis exploratorio de datos (EDA)
+hecho a partir de consultas SQL a una base de datos
+alojada en S3 y consultada a través de AWS Athena.</p>
+<p>Este módulo carga los datos procesados y permite
+al usuario seleccionar diferentes vistas para
+explorar los datos de cervezas, cervecerías y estilos.</p>
+<p>Visualizaciones:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Gráfico de barras de las cervecerías con más cervezas.</p></li>
+<li><p>Gráfico de barras de los estilos de cerveza más comunes.</p></li>
+<li><p>Gráfico de barras comparativo de sensaciones entre</p></li>
+</ul>
+<p>diferentes estilos de cerveza.</p>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="py.eda_ui.load_data">
+<span class="sig-prename descclassname"><span class="pre">py.eda_ui.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#py.eda_ui.load_data" title="Link to this definition"></a></dt>
+<dd><p>Carga los datos de cervezas, cervecerías y estilos desde archivos CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrames con datos de cervezas por cervecería, por estilo y sensaciones.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.eda_ui.main">
+<span class="sig-prename descclassname"><span class="pre">py.eda_ui.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#py.eda_ui.main" title="Link to this definition"></a></dt>
+<dd><p>Función principal que ejecuta la aplicación Streamlit.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.eda_ui.vista_brewery">
+<span class="sig-prename descclassname"><span class="pre">py.eda_ui.</span></span><span class="sig-name descname"><span class="pre">vista_brewery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.eda_ui.vista_brewery" title="Link to this definition"></a></dt>
+<dd><p>Visualiza un gráfico de barras con la cantidad de cervezas por cervecería.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>DataFrame: Datos de cervezas por cervecería.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.eda_ui.vista_estilo">
+<span class="sig-prename descclassname"><span class="pre">py.eda_ui.</span></span><span class="sig-name descname"><span class="pre">vista_estilo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.eda_ui.vista_estilo" title="Link to this definition"></a></dt>
+<dd><p>Visualiza un gráfico de barras con la cantidad de cervezas por estilo.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>DataFrame : Datos de cervezas por estilo.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.eda_ui.vista_sensaciones">
+<span class="sig-prename descclassname"><span class="pre">py.eda_ui.</span></span><span class="sig-name descname"><span class="pre">vista_sensaciones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.eda_ui.vista_sensaciones" title="Link to this definition"></a></dt>
+<dd><p>Visualiza sensaciones principales por estilo de cerveza.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>DataFrame: Datos de sensaciones por estilo.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</section>
+<section id="module-py.recommender">
+<span id="modulo-recommender-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">recommender.py</span></code><a class="headerlink" href="#module-py.recommender" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Módulo con funciones para el modelo de recomendación de cervezas.</dt><dd><dl class="simple">
+<dt>Funciones:</dt><dd><ul class="simple">
+<li><p><strong>df_scale_data</strong>: Escala los datos de las columnas sensoriales y de calificación.</p></li>
+<li><p><strong>recomendar_hibrido</strong>: Implementa un modelo Kmeans y KNN para recomendar cervezas similares.</p></li>
+<li><p><strong>get_valid_image_url</strong>: Obtiene una URL de imagen válida de un DataFrame.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="py.recommender.df_scale_data">
+<span class="sig-prename descclassname"><span class="pre">py.recommender.</span></span><span class="sig-name descname"><span class="pre">df_scale_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.recommender.df_scale_data" title="Link to this definition"></a></dt>
+<dd><p>Función para escalar los datos de las columnas sensoriales y de calificación.
+Se utiliza StandardScaler para normalizar los datos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>DataFrame</strong> – DataFrame con las columnas sensoriales y de calificación.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame con los datos escalados.
+list: Lista de nombres de columnas sensoriales y de calificación.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.recommender.get_valid_image_url">
+<span class="sig-prename descclassname"><span class="pre">py.recommender.</span></span><span class="sig-name descname"><span class="pre">get_valid_image_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'image_url'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.recommender.get_valid_image_url" title="Link to this definition"></a></dt>
+<dd><p>Función que obtiene una URL de imagen válida de un DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DataFrame</strong> – DataFrame que contiene las URLs de las imágenes.</p></li>
+<li><p><strong>str</strong> – Nombre de la columna que contiene las URLs de las imágenes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>URL de imagen válida o None si no se encuentra ninguna.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.recommender.recomendar_hibrido">
+<span class="sig-prename descclassname"><span class="pre">py.recommender.</span></span><span class="sig-name descname"><span class="pre">recomendar_hibrido</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nombre_cerveza</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_scaled</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.recommender.recomendar_hibrido" title="Link to this definition"></a></dt>
+<dd><p>Función que implementa un modelo Kmeans y KNN para recomendar cervezas similares.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str</strong> – Nombre de la cerveza base para la recomendación.</p></li>
+<li><p><strong>DataFrame</strong> – DataFrame con los datos de las cervezas.</p></li>
+<li><p><strong>DataFrame</strong> – DataFrame con los datos escalados.</p></li>
+<li><p><strong>list</strong> – Lista de nombres de columnas sensoriales y de calificación.</p></li>
+<li><p><strong>DataFrame</strong> – DataFrame con las URLs de las imágenes de las cervezas.</p></li>
+<li><p><strong>int</strong> – Número de recomendaciones a devolver.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame con las cervezas recomendadas.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-py.utils">
+<span id="modulo-utils-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">utils.py</span></code><a class="headerlink" href="#module-py.utils" title="Link to this heading"></a></h2>
+<p>Módulo  con funciones para cargar y procesar datos de cervezas y cervecerías.</p>
+<dl class="simple">
+<dt>Funciones:</dt><dd><ul class="simple">
+<li><p><strong>load_data</strong>: Carga los datos de cervezas y cervecerías desde un archivo CSV en una URL pública.</p></li>
+<li><p><strong>resize_image_to_height</strong>: Descarga una imagen desde una URL y la redimensiona a la altura especificada, manteniendo la relación de aspecto.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="py.utils.load_data">
+<span class="sig-prename descclassname"><span class="pre">py.utils.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#py.utils.load_data" title="Link to this definition"></a></dt>
+<dd><p>Carga los datos de cervezas y cervecerías desde un archivo CSV en una URL pública.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – <dl class="simple">
+<dt>Returns:</dt><dd><p>DataFrame: Datos de cervezas y cervecerías.
+DataFrame: Nombres de cervezas, cervecerías y URLs de imágenes.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py.utils.resize_image_to_height">
+<span class="sig-prename descclassname"><span class="pre">py.utils.</span></span><span class="sig-name descname"><span class="pre">resize_image_to_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_height</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.utils.resize_image_to_height" title="Link to this definition"></a></dt>
+<dd><p>Descarga una imagen desde una URL y la redimensiona a la altura especificada, manteniendo la relación de aspecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str</strong> – URL de la imagen a descargar.</p></li>
+<li><p><strong>int</strong> – Altura deseada (en píxeles) para la imagen redimensionada.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La imagen redimensionada como un objeto PIL Image.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PIL.Image.Image</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="modulo-streamlit-ui-py">
+<h2>Módulo <code class="docutils literal notranslate"><span class="pre">streamlit_ui.py</span></code><a class="headerlink" href="#modulo-streamlit-ui-py" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="info_docker.html" class="btn btn-neutral float-left" title="🐳 Dockerfile para BrewSmart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Marta - Sofía - Thomas.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

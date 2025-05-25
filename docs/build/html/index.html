@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación del Recomendador de Cervezas BrewSmart 🍺 &mdash; documentación de BrewSmart - 0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9c9b61ad"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="📦 Estructura del Proyecto" href="estructura.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            BrewSmart
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="estructura.html">📦 Estructura del Proyecto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_docker.html">🐳 Dockerfile para BrewSmart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulos.html">📖 MÓDULOS</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">BrewSmart</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentación del Recomendador de Cervezas BrewSmart 🍺</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="documentacion-del-recomendador-de-cervezas-brewsmart">
+<h1>Documentación del Recomendador de Cervezas BrewSmart 🍺<a class="headerlink" href="#documentacion-del-recomendador-de-cervezas-brewsmart" title="Link to this heading"></a></h1>
+<p>Este documento contiene la documentación necesaria para entender y utilizar el sistema de recomendación de cervezas BrewSmart. El sistema está diseñado para ayudar a los usuarios a encontrar cervezas que se adapten a sus preferencias y gustos personales.</p>
+<section id="descripcion-del-proyecto">
+<h2>📕 Descripción del Proyecto<a class="headerlink" href="#descripcion-del-proyecto" title="Link to this heading"></a></h2>
+<p>El sistema de recomendación de cervezas BrewSmart utiliza técnicas de aprendizaje automático y análisis de datos para proporcionar recomendaciones personalizadas a los usuarios.</p>
+<p>El sistema se basa en un conjunto de datos que contiene información sobre diferentes cervezas, incluyendo sus características, sabores y preferencias de los usuarios.</p>
+<p>En esta primera versión, se utiliza el conjunto de datos de Kaggle <a class="reference external" href="https://www.kaggle.com/datasets/aklil/beer-profile-and-ratings">Beer_Profile_and_Ratings</a> para entrenar el modelo de recomendación.</p>
+<p>En versiones futuras, productivas, el conjunto de datos se sustituirá por datos propios de BrewSmart, que incluirán información sobre las cervezas en inventario y las preferencias de los usuarios.</p>
+<p>Se presentan dos apps de Streamlit al usuario:</p>
+<ol class="arabic simple">
+<li><p>📊📈 <strong>Análisis del Inventario</strong>: Permite al usuario analizar su inventario por cervecería y estilos. Además, esta herramienta permite comparar las características fundamentales de sabor de diferentes cervezas en inventario.</p></li>
+</ol>
+<p>2.🍺🍺 <strong>Recomendador de Cervezas</strong>: Permite al usuario encontrar cervezas que se adapten a sus preferencias y gustos personales. El sistema utiliza un modelo de recomendación basado en el contenido y un modelo de filtrado colaborativo para proporcionar recomendaciones personalizadas.</p>
+</section>
+<section id="uso-del-proyecto">
+<h2>📚 Uso del proyecto<a class="headerlink" href="#uso-del-proyecto" title="Link to this heading"></a></h2>
+<p>Para utilizar el sistema de recomendación de cervezas BrewSmart, sigue estos pasos:</p>
+<ol class="arabic simple">
+<li><p><strong>Instalación</strong>: Ejecuta el ambiente que acompaña el proyecto:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">cerveza</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p><strong>Sesión AWS</strong>: Asegúrate de tener tu configuración de AWS en orden.
+Crea un archivo <code class="docutils literal notranslate"><span class="pre">.env</span></code> en la raíz del proyecto y añade las siguientes variables de entorno:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET_NAME</span><span class="o">=</span><span class="n">bucket_s3</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Preparación de datos</strong>: Ejecuta el script de preparación de datos para limpiar y transformar los datos, para luego ser utilizados tanto por la app de análisis como el recomendador.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Ejecuta la app de análisis</strong>: Ejecuta el script de la app de análisis para analizar tu inventario de cervezas.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">src</span><span class="o">/</span><span class="n">py</span><span class="o">/</span><span class="n">eda_ui</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Ejecuta la app de recomendación</strong>: Ejecuta el script de la app de recomendación para encontrar cervezas que se adapten a tus preferencias.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">src</span><span class="o">/</span><span class="n">py</span><span class="o">/</span><span class="n">streamlit_ui</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="estructura.html">📦 Estructura del Proyecto</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="estructura.html#nota">NOTA:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estructura.html#notebooks">🗒️ NOTEBOOKS :</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="info_docker.html">🐳 Dockerfile para BrewSmart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="info_docker.html#pasos-para-usarlo">🔧 Pasos para usarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modulos.html">📖 MÓDULOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#module-main">Módulo <code class="docutils literal notranslate"><span class="pre">main.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#module-py.transform">Módulo <code class="docutils literal notranslate"><span class="pre">transform.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#module-py.load">Módulo <code class="docutils literal notranslate"><span class="pre">load.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#module-py.athena_db">Módulo <code class="docutils literal notranslate"><span class="pre">athena_db.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#module-py.eda_ui">Módulo <code class="docutils literal notranslate"><span class="pre">eda_ui.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#module-py.recommender">Módulo <code class="docutils literal notranslate"><span class="pre">recommender.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#module-py.utils">Módulo <code class="docutils literal notranslate"><span class="pre">utils.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulos.html#modulo-streamlit-ui-py">Módulo <code class="docutils literal notranslate"><span class="pre">streamlit_ui.py</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="estructura.html" class="btn btn-neutral float-right" title="📦 Estructura del Proyecto" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Marta - Sofía - Thomas.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
