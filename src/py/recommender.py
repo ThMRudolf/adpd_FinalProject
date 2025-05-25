@@ -34,6 +34,36 @@ def df_scale_data(df):
 
 
 def recomendar_hibrido(nombre_cerveza, df, df_scaled, feature_cols, df_img, top_n=5):
+    """
+    Recommend similar beers using a hybrid KMeans + KNN approach.
+    This function first clusters the beers using KMeans based on their scaled sensory features,
+    then finds the cluster of the input beer, and finally applies KNN within that cluster to
+    recommend the most similar beers.
+    Parameters
+    ----------
+    nombre_cerveza : str
+        The (partial) name of the reference beer to base recommendations on.
+    df : pandas.DataFrame
+        DataFrame containing beer data, including at least a 'name' and 'style' column.
+    df_scaled : numpy.ndarray or pandas.DataFrame
+        Scaled feature matrix corresponding to the beers in `df`.
+    feature_cols : list of str
+        List of column names used as features for clustering and similarity.
+    df_img : pandas.DataFrame
+        DataFrame containing at least 'name' and 'image_url' columns for beers.
+    top_n : int, optional
+        Number of recommendations to return (default is 5).
+    Returns
+    -------
+    df_beer_recom : pandas.DataFrame
+        DataFrame with columns ["name", "style", "recommendation", "image_url"] containing
+        the recommended beers, their styles, similarity scores, and image URLs.
+    Notes
+    -----
+    - The function assumes that the input beer exists in `df` and that all DataFrames are aligned.
+    - Similarity is computed as 1 - cosine distance.
+    - The base beer itself is excluded from the recommendations.
+    """
 
     # Entrenar modelo final
     kmeans = KMeans(n_clusters=top_n, random_state=42, n_init=10)
