@@ -302,13 +302,13 @@ Funciones:</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="py.athena_db.create_table">
-<span class="sig-prename descclassname"><span class="pre">py.athena_db.</span></span><span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BUCKET_NAME</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.athena_db.create_table" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">py.athena_db.</span></span><span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py.athena_db.create_table" title="Link to this definition"></a></dt>
 <dd><p>Función que crea una tabla en Athena</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parámetros<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sesion</strong> – Sesión de boto3</p></li>
-<li><p><strong>BUCKET_NAME</strong> – Nombre del bucket de S3 donde se encuentran los datos</p></li>
+<li><p><strong>bucket_name</strong> – Nombre del bucket de S3 donde se encuentran los datos</p></li>
 </ul>
 </dd>
 </dl>
@@ -412,13 +412,14 @@ explorar los datos de cervezas, cervecerías y estilos.</p>
 </section>
 <section id="module-py.recommender">
 <span id="modulo-recommender-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">recommender.py</span></code><a class="headerlink" href="#module-py.recommender" title="Link to this heading"></a></h2>
-<dl class="simple">
-<dt>Módulo con funciones para el modelo de recomendación de cervezas.</dt><dd><dl class="simple">
+<dl>
+<dt>Módulo con funciones para el modelo de recomendación de cervezas.</dt><dd><dl>
 <dt>Funciones:</dt><dd><ul class="simple">
 <li><p><strong>df_scale_data</strong>: Escala los datos de las columnas sensoriales y de calificación.</p></li>
-<li><p><strong>recomendar_hibrido</strong>: Implementa un modelo Kmeans y KNN para recomendar cervezas similares.</p></li>
-<li><p><strong>get_valid_image_url</strong>: Obtiene una URL de imagen válida de un DataFrame.</p></li>
+<li><p><strong>recomendar_hibrido</strong>: Implementa un modelo Kmeans y</p></li>
 </ul>
+<p>KNN para recomendar cervezas similares.
+- <strong>get_valid_image_url</strong>: Obtiene una URL de imagen válida de un DataFrame.</p>
 </dd>
 </dl>
 </dd>
@@ -490,11 +491,13 @@ list: Lista de nombres de columnas sensoriales y de calificación.</p>
 <section id="module-py.utils">
 <span id="modulo-utils-py"></span><h2>Módulo <code class="docutils literal notranslate"><span class="pre">utils.py</span></code><a class="headerlink" href="#module-py.utils" title="Link to this heading"></a></h2>
 <p>Módulo  con funciones para cargar y procesar datos de cervezas y cervecerías.</p>
-<dl class="simple">
+<dl>
 <dt>Funciones:</dt><dd><ul class="simple">
-<li><p><strong>load_data</strong>: Carga los datos de cervezas y cervecerías desde un archivo CSV en una URL pública.</p></li>
-<li><p><strong>resize_image_to_height</strong>: Descarga una imagen desde una URL y la redimensiona a la altura especificada, manteniendo la relación de aspecto.</p></li>
+<li><p><strong>load_data</strong>: Carga los datos de cervezas y</p></li>
 </ul>
+<p>cervecerías desde un archivo CSV en una URL pública.
+- <strong>resize_image_to_height</strong>: Descarga una imagen desde una URL y
+la redimensiona a la altura especificada, manteniendo la relación de aspecto.</p>
 </dd>
 </dl>
 <dl class="py function">

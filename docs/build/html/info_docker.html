@@ -93,16 +93,46 @@
 <h2>🔧 Pasos para usarlo<a class="headerlink" href="#pasos-para-usarlo" title="Link to this heading"></a></h2>
 <section id="construir-la-imagen">
 <h3>1. Construir la imagen<a class="headerlink" href="#construir-la-imagen" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>brewsmart<span class="w"> </span>.
+<p>Ejecuta el siguiente comando en la terminal desde la raíz del proyecto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span>
+<span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">brewsmart</span> <span class="o">.</span>
 </pre></div>
 </div>
+<p>Este comando construirá la imagen de Docker con el nombre <code class="docutils literal notranslate"><span class="pre">brewsmart</span></code>.</p>
 </section>
 <section id="ejecutar-el-contenedor">
 <h3>2. Ejecutar el contenedor<a class="headerlink" href="#ejecutar-el-contenedor" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8501</span>:8501<span class="w"> </span>brewsmart
+<p>Antes de ejecutar el contenedor, asegúrate de tener tu configuración de AWS en orden. Crea un archivo <code class="docutils literal notranslate"><span class="pre">.env</span></code> en la raíz del proyecto y añade las siguientes variables de entorno:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET_NAME</span><span class="o">=</span><span class="n">bucket_s3</span>
+<span class="n">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="n">your_access_key_id</span>
+<span class="n">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="n">your_secret_access_key</span>
+<span class="n">AWS_REGION</span><span class="o">=</span><span class="n">your_aws_region</span>
 </pre></div>
 </div>
-<p>Abre tu navegador en <a class="reference external" href="http://localhost:8501">http://localhost:8501</a> para comenzar.</p>
+<p>Luego hay que ejecutar el contenedor en varios pasos: :</p>
+<ol class="arabic">
+<li><p>Procesamiento de datos, carga a S3 y generación de archivos para EDA:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span> <span class="o">.</span><span class="n">env</span> <span class="n">brewsmart</span> <span class="n">python</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p>Visualización de EDA:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8501</span><span class="p">:</span><span class="mi">8501</span> <span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span> <span class="o">.</span><span class="n">env</span> <span class="n">brewsmart</span> <span class="n">streamlit</span> <span class="n">run</span> <span class="n">src</span><span class="o">/</span><span class="n">py</span><span class="o">/</span><span class="n">eda_ui</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Abre tu navegador en <a class="reference external" href="http://localhost:8501">http://localhost:8501</a> para visualizar los resultados del análisis exploratorio de datos (EDA).</p>
+</li>
+<li><p>Recomendador de cervezas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span>
+    <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8502</span><span class="p">:</span><span class="mi">8501</span> <span class="o">--</span><span class="n">env</span><span class="o">-</span><span class="n">file</span> <span class="o">.</span><span class="n">env</span> <span class="n">brewsmart</span> <span class="n">streamlit</span> <span class="n">run</span> <span class="n">src</span><span class="o">/</span><span class="n">py</span><span class="o">/</span><span class="n">streamlit_ui</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Ignora lo que aparezca en la terminal si te pide abrir el localhost:8501.</p>
+<p>Abre tu navegador en <a class="reference external" href="http://localhost:8502">http://localhost:8502</a> para acceder a la aplicación de recomendación de cervezas.</p>
+</li>
+</ol>
 </section>
 </section>
 </section>
