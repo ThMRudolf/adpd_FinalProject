@@ -1,0 +1,53 @@
+.
+├── __pycache__
+│   └── main.cpython-311.pyc
+├── data
+│   ├── clean
+│   │   ├── beer_names_breweries_with_images.csv
+│   │   └── beer_profile_and_ratings.csv
+│   ├── queries
+│   │   ├── cervezas_per_brewery.csv
+│   │   ├── cervezas_per_style.csv
+│   │   └── sensaciones_top_estilos.csv
+│   └── raw
+│       └── beer_profile_and_ratings.csv
+├── docs
+│   ├── build
+│   │   ├── doctrees
+│   │   └── html
+│   ├── source
+│   │   ├── _static
+│   │   ├── _templates
+│   │   ├── conf.py
+│   │   ├── estructura.md
+│   │   ├── index.md
+│   │   └── modulos.md
+│   ├── make.bat
+│   └── Makefile
+├── src
+│   ├── bash
+│   │   ├── clean_data_1.sh
+│   │   └── clean_data.sh
+│   ├── notebooks
+│   │   ├── Beers_Final_Project.ipynb
+│   │   ├── eda_models-1.ipynb
+│   │   ├── eda.ipynb
+│   │   ├── get_data.ipynb
+│   │   ├── get_picture_links.ipynb
+│   │   └── Limpieza.ipynb
+│   └── py
+│       ├── __pycache__
+│       ├── __init__.py
+│       ├── athena_db.py
+│       ├── eda_ui.py
+│       ├── load.py
+│       ├── recommender.py
+│       ├── streamlit_ui.py
+│       ├── transform.py
+│       └── utils.py
+├── environment.yml
+├── main.py
+├── make.bat
+└── tree
+
+18 directories, 33 files
