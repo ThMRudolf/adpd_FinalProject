@@ -24,8 +24,5 @@ COPY . .
 # Exponer el puerto de Streamlit
 EXPOSE 8501
 
-# Comando que corre todo en orden
-ENTRYPOINT [ "bash", "-c", "\
-    python main.py && \
-    python src/py/eda_ui.py && \
-    streamlit run src/py/streamlit_ui.py" ]
+# Valor por defecto si no se pasa comando: corre streamlit_ui
+CMD ["streamlit", "run", "src/py/streamlit_ui.py"]
